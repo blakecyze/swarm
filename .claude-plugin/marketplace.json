@@ -8,7 +8,7 @@
     {
       "name": "swarm",
       "source": "./",
-      "description": "Agent-orchestration skills for Claude Code. Fan work out in parallel, pick winners, and delegate execution to cheaper models — with a hard cost ceiling."
+      "description": "Claude Code skills for running agent swarms on purpose. Sequential first, fan out only when it pays, hard cost ceiling."
     }
   ]
 }
