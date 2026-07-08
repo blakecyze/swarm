@@ -2,7 +2,7 @@
 
 > Deliberate agent orchestration. Sequential by default; the swarm has to earn its keep.
 
-Seven Claude Code skills for piloting agent swarms. Where [kanso](https://github.com/blakecyze/kanso) restrains, swarm spends — but never blindly. Every skill weighs fan-out against a single sequential pass, respects a hard cost ceiling, and judges outputs from outside.
+Seven Claude Code skills for running agent swarms on purpose. Where [kanso](https://github.com/blakecyze/kanso) restrains, swarm spends: it fans work out in parallel or hands execution to a cheaper model, but only when a single sequential pass would cost you more. A hard ceiling keeps it from running away, and nothing judges its own work.
 
 ```
 /plugin marketplace add blakecyze/swarm
@@ -32,16 +32,16 @@ Seven Claude Code skills for piloting agent swarms. Where [kanso](https://github
 ```markdown
 ## Swarm plan: migrate the REST handlers to the v2 error envelope
 
-**Verdict:** worth swarming — 14 handler files, no shared state, cheap merge
+**Verdict:** worth swarming (14 handler files, no shared state, cheap merge)
 
 ### Wave 1 (parallel, 4 slices)
-- **inventory** — list every handler and its current error shape
-- **auth handlers** — migrate `api/auth/*` (3 files)
-- **billing handlers** — migrate `api/billing/*` (5 files)
-- **catalogue handlers** — migrate `api/catalogue/*` (6 files)
+- **inventory**: list every handler and its current error shape
+- **auth handlers**: migrate `api/auth/*` (3 files)
+- **billing handlers**: migrate `api/billing/*` (5 files)
+- **catalogue handlers**: migrate `api/catalogue/*` (6 files)
 
 ### Wave 2 (depends on wave 1)
-- **contract tests** — needs: all migrated handlers
+- **contract tests**: needs all migrated handlers
 
 ### Merge
 Additive; one review pass over the combined diff. No selection involved.
@@ -59,7 +59,7 @@ Roughly 4x a single pass, peak 4 concurrent agents.
 /swarm-execute plans/        # cheap model executes them cold, verifies acceptance
 ```
 
-Every plan must be executable by an agent with zero prior context. If the executor gets stuck, the plan format is the defect — it gets bounced back, never patched over with session knowledge.
+Every plan has to run cold, with zero prior context. If the executor gets stuck, that's a defect in the plan, not the executor. Fix the format and send it back; don't patch it with knowledge only the session had.
 
 &nbsp;
 
