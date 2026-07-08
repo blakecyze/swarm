@@ -1,0 +1,14 @@
+{
+  "name": "swarm",
+  "owner": {
+    "name": "Blake Cyze",
+    "url": "https://github.com/blakecyze"
+  },
+  "plugins": [
+    {
+      "name": "swarm",
+      "source": "./",
+      "description": "Agent-orchestration skills for Claude Code. Fan work out in parallel, pick winners, and delegate execution to cheaper models — with a hard cost ceiling."
+    }
+  ]
+}
