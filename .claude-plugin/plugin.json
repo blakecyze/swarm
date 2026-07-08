@@ -1,6 +1,6 @@
 {
   "name": "swarm",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Claude Code skills for running agent swarms on purpose. Sequential first, fan out only when it pays, hard cost ceiling.",
   "author": {
     "name": "Blake Cyze",

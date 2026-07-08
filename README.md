@@ -6,10 +6,20 @@ Fanning a task out to a dozen agents feels powerful. Most of the time it just bu
 
 ## Get it
 
+In Claude Code:
+
 ```
 /plugin marketplace add blakecyze/swarm
 /plugin install swarm
 ```
+
+Anywhere else (Codex, Cursor, Gemini CLI, Grok Build), the skills follow the open Agent Skills standard, so one script installs them for every tool at once:
+
+```bash
+git clone https://github.com/blakecyze/swarm && swarm/scripts/install.sh
+```
+
+That symlinks each skill into `~/.agents/skills/`, plus each tool's own user dir (`~/.codex/skills`, `~/.cursor/skills`, `~/.gemini/skills`) where one exists; restart the tool afterwards. `--project`, `--copy` and `--uninstall` do what they say. Fair warning on fidelity: swarm is about parallel agents, and not every tool has them. The skills carry a capability ladder for that: native subagents where they exist (Claude Code, Grok Build), headless CLI fan-out where an agent CLI is on PATH, and honest one-at-a-time execution everywhere else. The plan and brief formats were built to survive the bottom rung.
 
 ## The skills
 
